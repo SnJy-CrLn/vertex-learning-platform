@@ -1,11 +1,11 @@
 import Link from "next/link";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import { TopNav } from "@/components/ui/navigation";
 import { Button } from "@/components/ui/button";
 import { TextInput } from "@/components/ui/input";
 import { CourseCard } from "@/components/ui/card";
 import {
   BellIcon,
-  UserIcon,
   ArrowRightIcon,
 } from "@/components/icons";
 
@@ -58,9 +58,21 @@ export default function Home() {
               >
                 <BellIcon className="h-5 w-5" />
               </button>
-              <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-neutral-500">
-                <UserIcon className="h-5 w-5" />
-              </div>
+              <Show when="signed-out">
+                <div className="flex items-center gap-3">
+                  <SignInButton>
+                    <button className="text-body font-medium text-neutral-700 hover:text-neutral-900">
+                      Sign in
+                    </button>
+                  </SignInButton>
+                  <SignUpButton>
+                    <Button>Sign up</Button>
+                  </SignUpButton>
+                </div>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
             </div>
           }
         />
