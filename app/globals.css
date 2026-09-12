@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Vertex Design System v1.0
+   A unified design language for the Vertex learning platform.
+   Every token below is consumed as a Tailwind utility (e.g. `bg-primary-500`,
+   `text-heading-1`, `rounded-md`, `shadow-lg`).
+   ========================================================================== */
+
+@theme {
+  /* --- 01 Colors -------------------------------------------------------- */
+  --color-primary-500: #f97316;
+  --color-primary-400: #fb923c;
+  --color-primary-300: #fdba74;
+  --color-primary-200: #fed7aa;
+  --color-primary-100: #ffeee5;
+
+  --color-neutral-900: #0f172a;
+  --color-neutral-700: #334155;
+  --color-neutral-500: #64748b;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-50: #fafafc;
+
+  /* Accents — used only by status + tag semantics, never as brand color. */
+  --color-success-500: #16a34a;
+  --color-success-100: #dcfce7;
+  --color-info-500: #4f46e5;
+  --color-info-100: #e8e8fd;
+
+  /* --- 02 Typography ---------------------------------------------------- */
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- 03 Type scale ---------------------------------------------------- */
+  --text-display-1: 48px;
+  --text-display-1--line-height: 56px;
+  --text-display-1--font-weight: 700;
+
+  --text-display-2: 36px;
+  --text-display-2--line-height: 44px;
+  --text-display-2--font-weight: 700;
+
+  --text-heading-1: 28px;
+  --text-heading-1--line-height: 36px;
+  --text-heading-1--font-weight: 600;
+
+  --text-heading-2: 22px;
+  --text-heading-2--line-height: 30px;
+  --text-heading-2--font-weight: 600;
+
+  --text-heading-3: 18px;
+  --text-heading-3--line-height: 26px;
+  --text-heading-3--font-weight: 500;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-body--font-weight: 400;
+
+  --text-small: 12px;
+  --text-small--line-height: 16px;
+  --text-small--font-weight: 400;
+
+  /* --- 04 Spacing ------------------------------------------------------- */
+  /* Base unit 4px. Tailwind's dynamic scale multiplies this, so `p-1` = 4px,
+     `p-4` = 16px, `p-16` = 64px — the full ramp with no extra tokens. */
+  --spacing: 4px;
+
+  /* --- 05 Radius -------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* --- 05 Shadows ------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 12px 24px -4px rgb(15 23 42 / 0.1);
+  --shadow-xl: 0 20px 40px -8px rgb(15 23 42 / 0.12);
+}
+
+/* The system is defined for a single light surface. Opting out of the UA dark
+   scheme keeps form controls and scrollbars on-palette. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Focus & Calm: one visible, consistent focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Section eyebrow used by the specimen sheet: `01  COLORS` */
+  .ds-eyebrow {
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-neutral-500);
+  }
 }
