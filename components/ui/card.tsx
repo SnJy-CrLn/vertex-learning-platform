@@ -23,7 +23,8 @@ function CardShell({ className, children }: { className?: string; children: Reac
 }
 
 export interface CourseCardProps {
-  initial: string;
+  initial: ReactNode;
+  iconBg?: string;
   title: string;
   description: string;
   level: string;
@@ -34,6 +35,7 @@ export interface CourseCardProps {
 
 export function CourseCard({
   initial,
+  iconBg = "bg-neutral-900",
   title,
   description,
   level,
@@ -44,7 +46,12 @@ export function CourseCard({
   return (
     <CardShell className={className}>
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-neutral-900 font-display text-heading-3 font-bold text-white">
+        <div
+          className={cn(
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-sm font-display text-heading-3 font-bold text-white",
+            iconBg,
+          )}
+        >
           {initial}
         </div>
         <div className="min-w-0">
