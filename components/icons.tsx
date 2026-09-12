@@ -230,6 +230,23 @@ export function TargetIcon(props: IconProps) {
   );
 }
 
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg {...outlineProps} {...props}>
+      <path d="M4 12h16" />
+      <path d="m13 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+export function ArrowRightFilledIcon(props: IconProps) {
+  return (
+    <svg width={24} height={24} viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M3 11h13.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H3v-2z" />
+    </svg>
+  );
+}
+
 export function AccessibleIcon(props: IconProps) {
   return (
     <svg {...outlineProps} {...props}>

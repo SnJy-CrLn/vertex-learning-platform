@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { ChevronRightIcon } from "@/components/icons";
 import { Logo } from "@/components/ui/logo";
@@ -7,22 +8,35 @@ export interface NavLink {
   href: string;
 }
 
-export function TopNav({ links, className }: { links: NavLink[]; className?: string }) {
+export function TopNav({
+  links,
+  right,
+  className,
+}: {
+  links: NavLink[];
+  right?: ReactNode;
+  className?: string;
+}) {
+  const nav = (
+    <ul className="flex flex-wrap items-center gap-6">
+      {links.map((link) => (
+        <li key={link.href}>
+          <a
+            href={link.href}
+            className="text-body font-medium text-neutral-700 hover:text-neutral-900"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
-    <nav className={cn("flex items-center justify-between", className)}>
+    <nav className={cn("flex items-center justify-between gap-6", className)}>
       <Logo />
-      <ul className="flex items-center gap-6">
-        {links.map((link) => (
-          <li key={link.href}>
-            <a
-              href={link.href}
-              className="text-body font-medium text-neutral-700 hover:text-neutral-900"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {nav}
+      {right}
     </nav>
   );
 }
