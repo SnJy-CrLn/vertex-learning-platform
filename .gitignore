@@ -39,7 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# claude code skills cache
-/.agents/
-/skills-lock.json
